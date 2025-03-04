@@ -20,11 +20,11 @@ export default function AdminLayout({
           setSidebarOpen={setSidebarOpen}
         />
         <div 
-          className={`flex-1 overflow-y-auto transition-all duration-300 ease-in-out ${
-            sidebarOpen ? 'mx-2' : 'mx-2'
+          className={`flex-1 overflow-y-auto bg-gray-50 transition-all duration-300 ease-in-out ${
+            sidebarOpen ? 'mx-0' : 'mx-0'
           }`}
         >
-          <main className="p-8 bg-blue-50">
+          <main className="p-8">
             {children}
           </main>
         </div>

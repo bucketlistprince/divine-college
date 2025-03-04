@@ -21,9 +21,6 @@ export function Navigation() {
             <Link href="/courses" className="text-gray-700 hover:text-primary dark:text-gray-300">
               Courses
             </Link>
-            <Link href="/events" className="text-gray-700 hover:text-primary dark:text-gray-300">
-              Events
-            </Link>
             <Link href="/gallery" className="text-gray-700 hover:text-primary dark:text-gray-300">
               Gallery
             </Link>

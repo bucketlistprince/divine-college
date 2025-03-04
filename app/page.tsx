@@ -47,17 +47,20 @@ export default function Home() {
               {[
                 {
                   title: 'Fashion Design',
-                  description: 'Learn the art of fashion design from industry experts',
+                  shortDescription: 'Learn the art of fashion design from industry experts',
+                  longDescription: 'Our Fashion Design program offers comprehensive training in the art and business of fashion design. You will learn from industry experts and gain hands-on experience in creating your own fashion collections.',
                   image: '/images/fashion-design.jpg'
                 },
                 {
                   title: 'Interior Design',
-                  description: 'Transform spaces with innovative design solutions',
+                  shortDescription: 'Transform spaces with innovative design solutions',
+                  longDescription: 'The Interior Design program focuses on creating functional and aesthetically pleasing spaces. You will learn about space planning, color theory, and the latest design trends to transform any space.',
                   image: '/images/interior-design.jpg'
                 },
                 {
                   title: 'Textile Design',
-                  description: 'Master the craft of textile design and production',
+                  shortDescription: 'Master the craft of textile design and production',
+                  longDescription: 'Our Textile Design program covers the entire process of textile creation, from concept to production. You will learn about different textile techniques and how to create unique textile designs.',
                   image: '/images/textile-design.jpg'
                 }
               ].map((program, index) => (
@@ -72,7 +75,8 @@ export default function Home() {
                   </div>
                   <div className="p-6 bg-white dark:bg-gray-800">
                     <h3 className="text-xl font-semibold mb-2">{program.title}</h3>
-                    <p className="text-gray-600 dark:text-gray-300">{program.description}</p>
+                    <p className="text-gray-600 dark:text-gray-300">{program.shortDescription}</p>
+                    <p className="text-gray-600 dark:text-gray-300 mt-4">{program.longDescription}</p>
                   </div>
                 </div>
               ))}

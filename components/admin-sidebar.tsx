@@ -56,12 +56,6 @@ export default function AdminSidebar({
               </Link>
             </li>
             <li>
-              <Link href="/admin/events" className="flex items-center gap-3 p-2.5 rounded-lg transition-colors text-gray-600 hover:bg-gray-50 hover:text-indigo-600">
-                <Calendar size={20} />
-                {sidebarOpen && <span>Events</span>}
-              </Link>
-            </li>
-            <li>
               <Link href="/admin/gallery" className="flex items-center gap-3 p-2.5 rounded-lg transition-colors text-gray-600 hover:bg-gray-50 hover:text-indigo-600">
                 <Image size={20} />
                 {sidebarOpen && <span>Gallery</span>}
