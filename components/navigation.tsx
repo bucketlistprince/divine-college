@@ -1,6 +1,11 @@
+"use client"
+
+import { useState } from "react"
 import Link from 'next/link';
+import { LoginDialog } from "./login-dialog"
 
 export function Navigation() {
+  const [showLoginDialog, setShowLoginDialog] = useState(false)
   return (
     <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-sm border-b z-50 dark:bg-gray-950/80">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -28,12 +33,33 @@ export function Navigation() {
             <Link href="/contact" className="text-gray-700 hover:text-primary dark:text-gray-300">
               Contact
             </Link>
-            <Link 
-              href="/apply" 
-              className="px-4 py-2 rounded-md bg-primary text-white hover:bg-primary/90 transition-colors"
-            >
-              Apply Now
-            </Link>
+            <div className="flex items-center space-x-4">
+              <Link 
+                href="/apply" 
+                className="px-4 py-2 rounded-md bg-primary text-white hover:bg-primary/90 transition-colors"
+              >
+                Apply Now
+              </Link>
+              <span className="text-gray-300">|</span>
+              <button 
+                onClick={() => setShowLoginDialog(true)}
+                className="flex items-center space-x-1 text-gray-700 hover:text-primary dark:text-gray-300"
+              >
+                <svg 
+                  className="h-5 w-5" 
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke="currentColor"
+                >
+                  <path 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round" 
+                    strokeWidth={2} 
+                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" 
+                  />
+                </svg>
+              </button>
+            </div>
           </div>
           
           {/* Mobile menu button */}
@@ -46,6 +72,11 @@ export function Navigation() {
           </div>
         </div>
       </div>
+
+      <LoginDialog 
+        isOpen={showLoginDialog}
+        onClose={() => setShowLoginDialog(false)}
+      />
     </nav>
   );
 }

@@ -46,32 +46,6 @@ export default function ShopPage() {
         <h1 className="text-4xl font-bold mb-8">College Store</h1>
         
         <div className="flex flex-col md:flex-row gap-8">
-          {/* Filters */}
-          <div className="w-full md:w-64 space-y-6">
-            <div>
-              <h2 className="text-xl font-semibold mb-4">Categories</h2>
-              <div className="space-y-2">
-                {["All", "Apparel", "Books", "Accessories", "Stationery"].map((category) => (
-                  <button
-                    key={category}
-                    className="block w-full text-left px-4 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-                  >
-                    {category}
-                  </button>
-                ))}
-              </div>
-            </div>
-            
-            <div>
-              <h2 className="text-xl font-semibold mb-4">Price Range</h2>
-              <input
-                type="range"
-                min="0"
-                max="100"
-                className="w-full"
-              />
-            </div>
-          </div>
           
           {/* Products Grid */}
           <div className="flex-1">
