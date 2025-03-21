@@ -92,7 +92,7 @@ export function Navigation(): React.ReactElement {
 
   useEffect(() => {
     console.log("Initial render: isMenuOpen =", isMenuOpen, "openGroups =", openGroups)
-  }, [])
+  }, [isMenuOpen, openGroups])
 
   const handleLogin = (userData: { email: string; role: string }) => {
     setUser(userData)
@@ -413,4 +413,3 @@ export function Navigation(): React.ReactElement {
     </nav>
   )
 }
-

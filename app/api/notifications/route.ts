@@ -42,7 +42,7 @@ export async function POST() {
       }),
       prisma.studentApplication.findMany({
         where: {
-          status: 'PENDING'
+          status: 'PENDING_FOLLOWUP'
         },
         orderBy: {
           createdAt: 'desc'

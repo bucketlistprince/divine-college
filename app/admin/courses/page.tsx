@@ -136,18 +136,18 @@ export default function CoursesPage() {
               key={course.id}
               className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow"
             >
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-gray-900">
-                    {course.title}
-                  </h3>
-                  <p className="text-sm text-gray-500 mt-1">
-                    Duration: {course.duration}
-                  </p>
-                  <p className="text-gray-600 mt-3">{course.description}</p>
-                  <p className="text-sm text-gray-500 mt-2">
-                    Status: {course.status}
-                  </p>
+              <div className="flex items-center justify-between gap-4">
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center justify-between gap-2">
+                    <h3 className="text-lg font-semibold text-gray-900 truncate">
+                      {course.title}
+                    </h3>
+                    <span className={`px-2 py-1 text-xs rounded-full ${course.status === 'PUBLISHED' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}`}>
+                      {course.status}
+                    </span>
+                  </div>
+                  <p className="text-sm text-gray-600 line-clamp-2 mt-1">{course.description}</p>
+                  <p className="text-xs text-gray-500 mt-1">Duration: {course.duration}</p>
                 </div>
                 <div className="flex gap-2">
                   <Button
