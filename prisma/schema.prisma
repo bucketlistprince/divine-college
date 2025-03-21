@@ -1,0 +1,186 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// User and Authentication
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  name          String
+  password      String
+  role          UserRole  @default(USER)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+enum UserRole {
+  ADMIN
+  STAFF
+  USER
+}
+
+// News Management
+model News {
+  id          String      @id @default(cuid())
+  title       String
+  content     String      @db.Text
+  category    String
+  author      String      // Changed from relation to string for simplicity
+  publishDate String      // Changed from DateTime to String
+  status      NewsStatus  @default(DRAFT)
+  views       Int         @default(0)
+  imageUrl    String?
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+}
+
+enum NewsStatus {
+  DRAFT
+  PUBLISHED
+}
+
+// Events Management
+model Event {
+  id          String      @id @default(cuid())
+  title       String
+  description String      @db.Text
+  imageUrl    String?
+  date        String      // Changed from DateTime to String
+  time        String
+  location    String
+  type        String
+  attendees   Int         @default(0)
+  status      EventStatus @default(UPCOMING)
+  createdBy   String      // Changed from relation to string
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+}
+
+enum EventStatus {
+  UPCOMING
+  ONGOING
+  PAST
+}
+
+// Course Management
+model Course {
+  id          Int         @id @default(autoincrement())
+  title       String
+  description String      @db.Text
+  instructor  String?     // Made optional
+  duration    String
+  level       String?     // Made optional
+  category    String?     // Made optional
+  imageUrl    String?     // Already optional
+  status      CourseStatus @default(DRAFT)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+}
+
+enum CourseStatus {
+  DRAFT
+  PUBLISHED
+}
+
+// Gallery Management
+model Gallery {
+  id          String    @id @default(cuid())
+  title       String
+  description String?   @db.Text
+  image       String
+  category    String
+  uploadedBy  String
+  uploadedAt  String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+// Shop Management
+model Product {
+  id          String    @id @default(cuid())
+  name        String
+  description String    @db.Text
+  category    String
+  price       Float
+  stock       Int       @default(0)
+  sales       Int       @default(0)
+  status      String
+  images      String[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  orders      OrderItem[]
+}
+
+model Order {
+  id            String      @id @default(cuid())
+  orderNumber   String      @unique
+  customerName  String
+  email         String
+  phone         String
+  address       String      @db.Text
+  status        OrderStatus @default(PENDING)
+  total         Float
+  items         OrderItem[]
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+}
+
+model OrderItem {
+  id        String   @id @default(cuid())
+  quantity  Int
+  price     Float
+  product   Product  @relation(fields: [productId], references: [id])
+  productId String
+  order     Order    @relation(fields: [orderId], references: [id])
+  orderId   String
+}
+
+// Student Applications
+model StudentApplication {
+  id          String              @id @default(cuid())
+  name        String
+  email       String
+  phone       String
+  program     String
+  status      ApplicationStatus   @default(PENDING)
+  date        String
+  documents   String[]            // Array of document URLs
+  notes       String?             @db.Text
+  createdAt   DateTime           @default(now())
+  updatedAt   DateTime           @updatedAt
+}
+
+enum ApplicationStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum OrderStatus {
+  PENDING
+  PAID
+  PROCESSING
+  SHIPPED
+  DELIVERED
+  CANCELLED
+}
+
+// Notifications
+model Notification {
+  id          String    @id @default(cuid())
+  type        String    // 'order' or 'application'
+  targetId    String    // ID of the order or application
+  title       String
+  message     String
+  read        Boolean   @default(false)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
