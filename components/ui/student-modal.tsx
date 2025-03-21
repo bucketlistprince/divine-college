@@ -89,6 +89,21 @@ export function StudentModal({ isOpen, onClose, student, onUpdateStatus }: Stude
                 </div>
               </div>
 
+              {/* Status Actions */}
+              <div className="mt-8">
+                <h3 className="text-lg font-medium text-gray-900 mb-4">Update Status</h3>
+                <select
+                  value={student.status}
+                  onChange={(e) => handleStatusUpdate(e.target.value)}
+                  className="w-full max-w-xs px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                >
+                  <option value="PENDING_FOLLOWUP">Pending Follow-up</option>
+                  <option value="FOLLOWED_UP">Followed up</option>
+                  <option value="ACCEPTED">Accepted</option>
+                  <option value="REJECTED">Rejected</option>
+                </select>
+              </div>
+
               {/* Documents */}
               {student.documents.length > 0 && (
                 <div className="mt-8">

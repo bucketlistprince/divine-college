@@ -108,7 +108,7 @@ export function ProductForm({ initialData, onSubmit, onCancel }: ProductFormProp
 
         <div>
           <label htmlFor="price" className="block text-sm font-medium text-gray-700">
-            Price ($)
+            Price (GHS)
           </label>
           <input
             type="number"

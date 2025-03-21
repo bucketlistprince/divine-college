@@ -150,7 +150,7 @@ model StudentApplication {
   email       String
   phone       String
   program     String
-  status      ApplicationStatus   @default(PENDING)
+  status      ApplicationStatus   @default(PENDING_FOLLOWUP)
   date        String
   documents   String[]            // Array of document URLs
   notes       String?             @db.Text
@@ -158,9 +158,11 @@ model StudentApplication {
   updatedAt   DateTime           @updatedAt
 }
 
+
 enum ApplicationStatus {
-  PENDING
-  APPROVED
+  PENDING_FOLLOWUP
+  FOLLOWED_UP
+  ACCEPTED
   REJECTED
 }
 

@@ -8,7 +8,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-gray-950 text-indigo-100 relative z-20">
+    <footer className="bg-gray-950 text-white relative z-20">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* About Section */}
@@ -22,7 +22,7 @@ export function Footer() {
                 className="mb-2"
               />
       
-            <p className="text-sm leading-relaxed mb-4 text-indigo-200">
+            <p className="text-sm leading-relaxed mb-4 text-white">
               Divine College of Creative Arts is committed to nurturing creative excellence
               and preparing students for successful careers in the arts and design industry.
             </p>
@@ -44,27 +44,27 @@ export function Footer() {
             <h3 className="text-white text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/programs" className="text-sm text-indigo-200 hover:text-white transition-colors">
+                <Link href="/programs" className="text-sm text-white hover:text-white transition-colors">
                   Our Programs
                 </Link>
               </li>
               <li>
-                <Link href="/admissions" className="text-sm text-indigo-200 hover:text-white transition-colors">
+                <Link href="/admissions" className="text-sm text-white hover:text-white transition-colors">
                   Admissions
                 </Link>
               </li>
               <li>
-                <Link href="/campus-life" className="text-sm text-indigo-200 hover:text-white transition-colors">
+                <Link href="/campus-life" className="text-sm text-white hover:text-white transition-colors">
                   Campus Life
                 </Link>
               </li>
               <li>
-                <Link href="/events" className="text-sm text-indigo-200 hover:text-white transition-colors">
+                <Link href="/events" className="text-sm text-white hover:text-white transition-colors">
                   Events & News
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="text-sm text-indigo-200 hover:text-white transition-colors">
+                <Link href="/about" className="text-sm text-white hover:text-white transition-colors">
                   About Us
                 </Link>
               </li>
@@ -76,25 +76,25 @@ export function Footer() {
             <h3 className="text-white text-lg font-semibold mb-4">Contact Us</h3>
             <ul className="space-y-3">
               <li className="flex items-center space-x-3 text-sm">
-                <Mail size={16} className="text-indigo-300" />
-                <a href="mailto:Sabbebg1000@gmail.com" className="text-indigo-200 hover:text-white transition-colors">
+                <Mail size={16} className="text-white" />
+                <a href="mailto:Sabbebg1000@gmail.com" className="text-white hover:text-white transition-colors">
                   Sabbebg1000@gmail.com
                 </a>
               </li>
               <li className="flex items-center space-x-3 text-sm">
-                <Phone size={16} className="text-indigo-300" />
+                <Phone size={16} className="text-white" />
                 <div className="flex flex-col">
-                  <a href="tel:+233249961898" className="text-indigo-200 hover:text-white transition-colors">
+                  <a href="tel:+233249961898" className="text-white hover:text-white transition-colors">
                     +233 24 996 1898
                   </a>
-                  <a href="tel:+233249961898" className="text-indigo-200 hover:text-white transition-colors">
+                  <a href="tel:+233249961898" className="text-white hover:text-white transition-colors">
                     +233 24 996 1898 (Business)
                   </a>
                 </div>
               </li>
               <li className="flex items-start space-x-3 text-sm">
-                <MapPin size={16} className="mt-1 flex-shrink-0 text-indigo-300" />
-                <span className="text-indigo-200">
+                <MapPin size={16} className="mt-1 flex-shrink-0 text-white" />
+                <span className="text-white">
                   P.O. Box 2152<br />
                   Kaneshie, Accra<br />
                   Ghana

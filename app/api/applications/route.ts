@@ -39,7 +39,7 @@ export async function POST(request: Request) {
         phone: data.phone,
         program: course.title,
         notes: data.message || '',
-        status: 'PENDING',
+        status: 'PENDING_FOLLOWUP',
         date: new Date().toISOString().split('T')[0],
         documents: []
       }
