@@ -31,11 +31,11 @@ export function Loading({ className, size = "md" }: LoadingProps) {
 
   return (
     <div className={cn(
-      "flex items-center justify-center min-h-[200px]",
+      "flex items-center justify-center w-full h-full min-h-[100px]",
       className
     )}>
       <div className={cn(
-        "relative",
+        "relative flex items-center justify-center",
         containerClass
       )}>
         <Image
@@ -43,7 +43,8 @@ export function Loading({ className, size = "md" }: LoadingProps) {
           alt="Loading"
           width={width}
           height={height}
-          className="animate-pulse"
+          className="animate-pulse dark:invert"
+          priority
         />
       </div>
     </div>

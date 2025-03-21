@@ -274,7 +274,27 @@ export function Navigation(): React.ReactElement {
             </div>
 
             {/* Mobile Navigation */}
-            <div className="md:hidden">
+            <div className="md:hidden flex items-center space-x-2">
+              {/* Cart button - only show on shop pages */}
+              {pathname && (pathname === '/shop' || pathname.startsWith('/shop/')) && (
+                <button
+                  onClick={() => {
+                    if (typeof window !== 'undefined') {
+                      window.dispatchEvent(new CustomEvent('openCart'))
+                    }
+                  }}
+                  className="p-2 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 hover:bg-gray-100/50 dark:hover:bg-gray-700/50 rounded-lg transition-colors relative"
+                >
+                  <ShoppingCart className="h-6 w-6" />
+                  {cartItems.length > 0 && (
+                    <span className="absolute -top-1 -right-1 bg-blue-600 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                      {cartItems.length}
+                    </span>
+                  )}
+                </button>
+              )}
+
+              {/* Menu Button */}
               <button
                 onClick={toggleMenu}
                 className="p-2 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 hover:bg-gray-100/50 dark:hover:bg-gray-700/50 rounded-lg transition-colors"
@@ -331,27 +351,16 @@ export function Navigation(): React.ReactElement {
                 </div>
                 {/* Mobile user controls */}
                 <div className="py-4 px-4 space-y-3 bg-gray-50 dark:bg-gray-800/50">
-                  {/* Cart button - only show on shop pages */}
-                  {pathname && (pathname === '/shop' || pathname.startsWith('/shop/')) && (
-                    <button
-                      onClick={() => {
-                        if (typeof window !== 'undefined') {
-                          const event = new CustomEvent('openCart')
-                          window.dispatchEvent(event)
-                        }
-                        setIsMenuOpen(false)
-                      }}
-                      className="w-full px-4 py-3 text-base font-medium text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 hover:bg-gray-100/50 dark:hover:bg-gray-700/50 rounded-lg transition-colors flex items-center gap-3"
-                    >
-                      <ShoppingCart className="h-5 w-5" />
-                      <span>Cart</span>
-                      {cartItems.length > 0 && (
-                        <span className="bg-primary text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center ml-auto">
-                          {cartItems.length}
-                        </span>
-                      )}
-                    </button>
-                  )}
+
+
+                  {/* Apply Now button */}
+                  <Link
+                    href="/apply"
+                    onClick={handleLinkClick}
+                    className="block w-full px-4 py-3 text-base font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-lg text-center transition-colors"
+                  >
+                    Apply Now
+                  </Link>
 
                   {/* User menu */}
                   {!user ? (
@@ -360,10 +369,9 @@ export function Navigation(): React.ReactElement {
                         setShowLoginDialog(true)
                         setIsMenuOpen(false)
                       }}
-                      className="w-full px-4 py-3 text-base font-medium text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 hover:bg-gray-100/50 dark:hover:bg-gray-700/50 rounded-lg transition-colors flex items-center gap-3"
+                      className="block w-full px-4 py-3 text-base font-semibold text-blue-600 hover:text-blue-700 bg-blue-50 hover:bg-blue-100 rounded-lg text-center transition-colors"
                     >
-                      <User className="h-5 w-5" />
-                      <span>Login</span>
+                      Sign In
                     </button>
                   ) : (
                     <>
@@ -371,9 +379,9 @@ export function Navigation(): React.ReactElement {
                         <Link
                           href="/admin"
                           onClick={handleLinkClick}
-                          className="w-full px-4 py-3 text-base font-medium text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 hover:bg-gray-100/50 dark:hover:bg-gray-700/50 rounded-lg transition-colors flex items-center gap-3"
+                          className="block w-full px-4 py-3 text-base font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 bg-gray-50 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 rounded-lg text-center transition-colors"
                         >
-                          Admin
+                          Admin Dashboard
                         </Link>
                       )}
                       <button
@@ -381,22 +389,15 @@ export function Navigation(): React.ReactElement {
                           handleLogout()
                           setIsMenuOpen(false)
                         }}
-                        className="w-full px-4 py-3 text-base font-medium text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 hover:bg-gray-100/50 dark:hover:bg-gray-700/50 rounded-lg transition-colors flex items-center gap-3"
+                        className="block w-full px-4 py-3 text-base font-semibold text-red-600 hover:text-red-700 bg-red-50 hover:bg-red-100 rounded-lg text-center transition-colors flex items-center justify-center gap-2"
                       >
                         <LogOut className="h-5 w-5" />
-                        <span>Logout</span>
+                        Sign Out
                       </button>
                     </>
                   )}
 
-                  {/* Apply Now button */}
-                  <Link
-                    href="/apply"
-                    onClick={handleLinkClick}
-                    className="w-full px-4 py-3 text-base font-medium text-white bg-primary hover:bg-primary/90 rounded-lg transition-colors text-center mt-2"
-                  >
-                    Apply Now
-                  </Link>
+
                 </div>
               </div>
             </div>
