@@ -11,16 +11,14 @@ interface CourseData {
 export async function GET() {
   try {
     const courses = await prisma.course.findMany({
-      where: {
-        status: 'PUBLISHED'
-      },
       select: {
         id: true,
         title: true,
         description: true,
         duration: true,
         status: true,
-        createdAt: true
+        createdAt: true,
+        updatedAt: true
       },
       orderBy: {
         createdAt: 'desc'
@@ -81,10 +79,20 @@ export async function PUT(request: NextRequest) {
 
 export async function DELETE(request: NextRequest) {
   try {
-    const json = await request.json() as { id: number }
+    const searchParams = request.nextUrl.searchParams
+    const id = searchParams.get('id')
+    
+    if (!id) {
+      return NextResponse.json(
+        { error: 'Course ID is required' },
+        { status: 400 }
+      )
+    }
+
     const course = await prisma.course.delete({
-      where: { id: json.id }
+      where: { id: Number(id) }
     })
+    
     return NextResponse.json(course)
   } catch (error) {
     console.error('Error deleting course:', error)
