@@ -31,9 +31,17 @@ export async function POST(request: Request) {
     console.log('Received data:', data)
     
     // Validate required fields
-    if (!data.name || !data.description || !data.category || !data.price || data.stock === undefined || !data.status) {
+    const name = data.title || data.name;
+    if (!name || !data.description || !data.price || data.stock === undefined || !data.status) {
+      console.error('Missing required fields:', { 
+        hasName: !!name, 
+        hasDescription: !!data.description,
+        hasPrice: !!data.price,
+        hasStock: data.stock !== undefined,
+        hasStatus: !!data.status
+      });
       return NextResponse.json(
-        { error: 'Missing required fields' },
+        { error: 'Missing required fields. Required: title/name, description, price, stock, status' },
         { status: 400 }
       )
     }
@@ -66,13 +74,13 @@ export async function POST(request: Request) {
     }
 
     const productData: Prisma.ProductCreateInput = {
-      name: data.name.trim(),
+      name: name.trim(),
       description: data.description.trim(),
-      category: data.category.trim(),
+      category: data.category ? data.category.trim() : 'General',
       price,
       stock,
       status: data.status,
-      images: Array.isArray(data.images) ? data.images : [],
+      images: Array.isArray(data.images) ? data.images : (data.images ? [data.images] : []),
       sales: 0
     }
     
