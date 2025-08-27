@@ -2,6 +2,7 @@
 
 import { Hero } from "@/components/ui/hero"
 import { Features } from "@/components/ui/features"
+import { HomeGallery } from "@/components/ui/home-gallery"
 import { Programs } from "@/components/ui/programs"
 import { NewsAndEvents } from "@/components/ui/news-and-events"
 import { CTA } from "@/components/ui/cta"
@@ -15,6 +16,7 @@ export default function Home() {
       </div>
       <Hero />
       <Features />
+      <HomeGallery limit={6} />
       <div className="relative">
         <div className="absolute inset-0 bg-gradient-to-b from-indigo-50/90 to-white pointer-events-none" />
         <div className="relative">

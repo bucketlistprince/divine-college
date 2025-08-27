@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { Facebook, Instagram, Twitter, Mail, Phone, MapPin } from "lucide-react"
+import { Facebook, Instagram, Mail, Phone, MapPin } from "lucide-react"
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -27,14 +27,11 @@ export function Footer() {
               and preparing students for successful careers in the arts and design industry.
             </p>
             <div className="flex space-x-4">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-indigo-300 hover:text-indigo-200 transition-colors">
+              <a href="https://www.facebook.com/share/1JFxvGvetC/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="text-indigo-300 hover:text-indigo-200 transition-colors">
                 <Facebook size={20} />
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-indigo-300 hover:text-purple-300 transition-colors">
+              <a href="https://www.instagram.com/divinecollegeofcreativearts?igsh=ZTRuMGhucXBvMDM2" target="_blank" rel="noopener noreferrer" className="text-indigo-300 hover:text-purple-300 transition-colors">
                 <Instagram size={20} />
-              </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-indigo-300 hover:text-indigo-200 transition-colors">
-                <Twitter size={20} />
               </a>
             </div>
           </div>

@@ -265,7 +265,7 @@ export function Navigation(): React.ReactElement {
                   {/* Apply Now button */}
                   <Link
                     href="/apply"
-                    className="px-4 py-2 text-sm font-medium text-white bg-primary hover:bg-primary/90 rounded-lg transition-colors"
+                    className="px-5 py-2 text-sm font-medium text-white bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg hover:opacity-90 transition-all duration-300 text-center shadow-md shadow-indigo-600/20 hover:shadow-lg hover:shadow-indigo-600/25 hover:-translate-y-0.5"
                   >
                     Apply Now
                   </Link>
@@ -357,7 +357,7 @@ export function Navigation(): React.ReactElement {
                   <Link
                     href="/apply"
                     onClick={handleLinkClick}
-                    className="block w-full px-4 py-3 text-base font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-lg text-center transition-colors"
+                    className="block w-full px-5 py-2.5 text-base font-semibold text-white bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg hover:opacity-90 transition-all duration-300 text-center shadow-md shadow-indigo-600/20 hover:shadow-lg hover:shadow-indigo-600/25 hover:-translate-y-0.5"
                   >
                     Apply Now
                   </Link>

@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 
 import { PageHeader } from "@/components/ui/page-header"
-import { MapPin, Phone, Mail, Clock } from "lucide-react"
+import { MapPin, Phone, Mail, Clock, Facebook, Instagram } from "lucide-react"
 
 const contactInfo = [
   {
@@ -62,6 +62,32 @@ export default function ContactPage() {
                 ))}
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Social Links */}
+      <section className="pt-0 pb-12">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-center gap-4 sm:gap-6">
+            <a
+              href="https://www.facebook.com/share/1JFxvGvetC/?mibextid=wwXIfr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-blue-200 text-blue-700 hover:bg-blue-50 transition-colors"
+            >
+              <Facebook className="w-5 h-5" />
+              <span>Facebook</span>
+            </a>
+            <a
+              href="https://www.instagram.com/divinecollegeofcreativearts?igsh=ZTRuMGhucXBvMDM2"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-pink-200 text-pink-700 hover:bg-pink-50 transition-colors"
+            >
+              <Instagram className="w-5 h-5" />
+              <span>Instagram</span>
+            </a>
           </div>
         </div>
       </section>
@@ -149,12 +175,13 @@ export default function ContactPage() {
         <div className="container mx-auto px-4">
           <div className="h-[400px] rounded-2xl overflow-hidden shadow-lg">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.8992825987547!2d-0.24643502414432818!3d5.578499333727755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf9a7d588b5833%3A0xb3b48e9b63b93f59!2sKaneshie%2C%20Accra!5e0!3m2!1sen!2sgh!4v1710932933814!5m2!1sen!2sgh"
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3970.642435786627!2d-0.4740285!3d5.6196966!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1027d7baeb641f3b%3A0xf0ccc4e56ee42fe2!2sDivine%20college%20of%20creative%20art!5e0!3m2!1sen!2sgh!4v1756299554414!5m2!1sen!2sgh"
               width="100%"
               height="100%"
               style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
             />
           </div>
         </div>

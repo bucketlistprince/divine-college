@@ -105,7 +105,7 @@ export function Programs() {
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {courses.map((course, index) => (
+          {courses.slice(0, 3).map((course, index) => (
             <motion.div
               key={course.id}
               initial={{ opacity: 0, y: 20 }}
@@ -115,22 +115,21 @@ export function Programs() {
               className="group relative" 
               onClick={() => window.location.href = `/courses/${course.id}`}
             >
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl blur opacity-10 group-hover:opacity-30 transition duration-300"></div>
-              <div className="relative bg-gradient-to-br from-white via-indigo-50/10 to-purple-50/10 backdrop-blur-sm rounded-2xl p-8 ring-1 ring-gray-100 border border-gray-100 cursor-pointer">
+              <div className="relative bg-white rounded-2xl p-8 border border-gray-200 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
                 <div className="mb-6">
-                  <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-white/80 text-indigo-700 ring-1 ring-indigo-100">
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-50 text-gray-700 ring-1 ring-gray-200">
                     {course.duration}
                   </span>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-indigo-600 transition-colors">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4 line-clamp-2">
                   {course.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed mb-6">
+                <p className="text-gray-600 leading-relaxed mb-6 line-clamp-3">
                   {course.description}
                 </p>
-                <div className="flex items-center text-sm text-indigo-600 font-medium">
+                <div className="flex items-center text-sm text-gray-700 font-medium">
                   Learn more
-                  <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </div>
