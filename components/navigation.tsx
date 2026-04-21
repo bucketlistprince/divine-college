@@ -68,9 +68,10 @@ export function Navigation(): React.ReactElement {
       window.addEventListener('storage', handleStorageChange)
 
       // Listen for cart updates (same tab)
-      const handleCartUpdate = (e: any) => {
-        if (e.detail?.items) {
-          setCartItems(e.detail.items)
+      const handleCartUpdate = (e: Event) => {
+        const event = e as CustomEvent<{ items: CartItem[] }>
+        if (event.detail?.items) {
+          setCartItems(event.detail.items)
         }
       }
       window.addEventListener('cartUpdate', handleCartUpdate as EventListener)
@@ -104,7 +105,7 @@ export function Navigation(): React.ReactElement {
 
   useEffect(() => {
     console.log("Initial render: isMenuOpen =", isMenuOpen, "openGroups =", openGroups)
-  }, [])
+  }, [isMenuOpen, openGroups])
 
   const handleLogin = (userData: { email: string; role: string }) => {
     setUser(userData)
