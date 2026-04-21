@@ -77,8 +77,8 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-center space-x-3 text-sm">
                 <Mail size={16} className="text-indigo-300" />
-                <a href="mailto:Sabbebg1000@gmail.com" className="text-indigo-200 hover:text-white transition-colors">
-                  Sabbebg1000@gmail.com
+                <a href="mailto:info@divinecollegeofarts.com" className="text-indigo-200 hover:text-white transition-colors">
+                  info@divinecollegeofarts.com
                 </a>
               </li>
               <li className="flex items-center space-x-3 text-sm">
@@ -95,9 +95,8 @@ export function Footer() {
               <li className="flex items-start space-x-3 text-sm">
                 <MapPin size={16} className="mt-1 flex-shrink-0 text-indigo-300" />
                 <span className="text-indigo-200">
-                  P.O. Box 2152<br />
-                  Kaneshie, Accra<br />
-                  Ghana
+                  Kasoa<br />
+                  Papaase No.1
                 </span>
               </li>
             </ul>

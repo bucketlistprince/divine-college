@@ -162,6 +162,9 @@ enum ApplicationStatus {
   PENDING
   APPROVED
   REJECTED
+  PENDING_FOLLOWUP
+  FOLLOWED_UP
+  ACCEPTED
 }
 
 enum OrderStatus {

@@ -66,7 +66,19 @@ export function Navigation(): React.ReactElement {
       }
 
       window.addEventListener('storage', handleStorageChange)
-      return () => window.removeEventListener('storage', handleStorageChange)
+
+      // Listen for cart updates (same tab)
+      const handleCartUpdate = (e: any) => {
+        if (e.detail?.items) {
+          setCartItems(e.detail.items)
+        }
+      }
+      window.addEventListener('cartUpdate', handleCartUpdate as EventListener)
+
+      return () => {
+        window.removeEventListener('storage', handleStorageChange)
+        window.removeEventListener('cartUpdate', handleCartUpdate as EventListener)
+      }
     }
   }, [])
 

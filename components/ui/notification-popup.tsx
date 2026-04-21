@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { Bell, ShoppingBag, UserPlus, X } from "lucide-react"
 import { formatDistanceToNow } from "date-fns"
+import { useRouter } from "next/navigation"
 
 interface Notification {
   id: string
@@ -17,6 +18,7 @@ export function NotificationPopup() {
   const [notifications, setNotifications] = useState<Notification[]>([])
   const [isOpen, setIsOpen] = useState(false)
   const [hasUnread, setHasUnread] = useState(false)
+  const router = useRouter()
 
   useEffect(() => {
     // Check for unread notifications
@@ -65,6 +67,18 @@ export function NotificationPopup() {
       }
     } catch (error) {
       console.error("Error marking notification as read:", error)
+    }
+  }
+  
+  const handleNotificationClick = (notification: Notification) => {
+    if (!notification.read) {
+      markAsRead(notification.id)
+    }
+    setIsOpen(false)
+    if (notification.type === 'order') {
+      router.push('/admin/shop/orders')
+    } else if (notification.type === 'application') {
+      router.push('/admin/students')
     }
   }
 
@@ -124,11 +138,14 @@ export function NotificationPopup() {
                   {notifications.map((notification) => (
                     <div
                       key={notification.id}
-                      className={`p-4 hover:bg-gray-50 transition-colors ${
+                      className={`relative group hover:bg-gray-50 transition-colors ${
                         !notification.read ? "bg-blue-50/50" : ""
                       }`}
                     >
-                      <div className="flex gap-3">
+                      <button
+                        onClick={() => handleNotificationClick(notification)}
+                        className="w-full text-left p-4 pr-10 flex gap-3"
+                      >
                         <div className="flex-shrink-0">
                           {notification.type === "application" ? (
                             <div className="p-2 bg-blue-100 rounded-lg">
@@ -153,18 +170,22 @@ export function NotificationPopup() {
                             })}
                           </p>
                         </div>
-                        {!notification.read && (
-                          <button
-                            onClick={() => markAsRead(notification.id)}
-                            className="flex-shrink-0 p-1 text-gray-400 hover:text-gray-500 transition-colors"
-                          >
-                            <X className="h-4 w-4" />
                           </button>
-                        )}
-                      </div>
+                          {!notification.read && (
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation()
+                                markAsRead(notification.id)
+                              }}
+                              className="absolute right-2 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-gray-500 transition-colors opacity-0 group-hover:opacity-100"
+                              aria-label="Mark as read"
+                            >
+                              <X className="h-4 w-4" />
+                            </button>
+                          )}
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
               )}
             </div>
           </div>

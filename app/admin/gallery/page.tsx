@@ -102,7 +102,7 @@ export default function GalleryPage() {
             description: data.description,
             category: data.category,
             image: url,
-            uploadedBy: "admin@divinecollege.edu", // This should come from auth
+            uploadedBy: "info@divinecollegeofarts.com", // This should come from auth
           })
         }).then(res => {
           if (!res.ok) throw new Error('Failed to create photo entry');

@@ -13,7 +13,8 @@ import {
   Home,
   Menu,
   X,
-  FileText
+  FileText,
+  Package
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { useSidebar } from "@/components/providers/sidebar-provider"
@@ -71,6 +72,11 @@ const sidebarItems = [
     title: "Shop",
     icon: ShoppingBag,
     href: "/admin/shop"
+  },
+  {
+    title: "Orders",
+    icon: Package,
+    href: "/admin/shop/orders"
   },
   {
     title: "Settings",

@@ -88,7 +88,7 @@ export default function EventsPage() {
         body: JSON.stringify({
           ...data,
           imageUrl: imageUrl,
-          createdBy: "admin@divinecollege.edu", // This should come from auth
+          createdBy: "info@divinecollegeofarts.com", // This should come from auth
         })
       })
 

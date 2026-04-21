@@ -71,6 +71,16 @@ export async function POST(request: Request) {
       })
     }
 
+    // Create notification for admin
+    await prisma.notification.create({
+      data: {
+        type: 'order',
+        targetId: order.id,
+        title: `New Order #${order.orderNumber}`,
+        message: `Order from ${order.customerName} for GH₵${order.total.toFixed(2)}`,
+      }
+    })
+
     return NextResponse.json(order)
   } catch (error) {
     console.error('Error creating order:', error)

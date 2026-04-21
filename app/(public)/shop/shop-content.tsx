@@ -34,6 +34,8 @@ export function ShopContent({ products }: { products: Product[] }) {
   // Save cart items to localStorage whenever they change
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cartItems))
+    // Dispatch cart update event with cart items for immediate UI reactivity
+    window.dispatchEvent(new CustomEvent('cartUpdate', { detail: { items: cartItems } }))
   }, [cartItems])
 
   const addToCart = (product: Product) => {
@@ -54,8 +56,6 @@ export function ShopContent({ products }: { products: Product[] }) {
         imageUrl: product.images && product.images.length > 0 ? product.images[0] : undefined
       }]
     })
-    // Dispatch cart update event with cart items
-    window.dispatchEvent(new CustomEvent('cartUpdate', { detail: { items: cartItems } }))
   }
 
   const updateQuantity = (id: string, quantity: number) => {
@@ -68,14 +68,10 @@ export function ShopContent({ products }: { products: Product[] }) {
         item.id === id ? { ...item, quantity } : item
       )
     )
-    // Dispatch cart update event with cart items
-    window.dispatchEvent(new CustomEvent('cartUpdate', { detail: { items: cartItems } }))
   }
 
   const removeFromCart = (id: string) => {
     setCartItems(prevItems => prevItems.filter(item => item.id !== id))
-    // Dispatch cart update event with cart items
-    window.dispatchEvent(new CustomEvent('cartUpdate', { detail: { items: cartItems } }))
   }
 
   return (

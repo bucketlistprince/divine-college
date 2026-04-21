@@ -129,7 +129,7 @@ const settingSections: SettingSection[] = [
       {
         label: "SMTP Server",
         type: "text",
-        value: "smtp.divinecollege.edu",
+        value: "smtp.divinecollegeofarts.com",
       },
       {
         label: "SMTP Port",

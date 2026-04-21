@@ -9,7 +9,7 @@ const contactInfo = [
   {
     icon: <MapPin className="w-6 h-6 text-blue-600" />,
     title: "Visit Us",
-    details: ["P.O. Box 2152", "Kaneshie, Accra", "Ghana"]
+    details: ["Kasoa", "Papaase No.1"]
   },
   {
     icon: <Phone className="w-6 h-6 text-blue-600" />,
@@ -19,7 +19,7 @@ const contactInfo = [
   {
     icon: <Mail className="w-6 h-6 text-blue-600" />,
     title: "Email Us",
-    details: ["Sabbebg1000@gmail.com"]
+    details: ["info@divinecollegeofarts.com"]
   },
   {
     icon: <Clock className="w-6 h-6 text-blue-600" />,
@@ -149,7 +149,7 @@ export default function ContactPage() {
         <div className="container mx-auto px-4">
           <div className="h-[400px] rounded-2xl overflow-hidden shadow-lg">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.8992825987547!2d-0.24643502414432818!3d5.578499333727755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf9a7d588b5833%3A0xb3b48e9b63b93f59!2sKaneshie%2C%20Accra!5e0!3m2!1sen!2sgh!4v1710932933814!5m2!1sen!2sgh"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.6376471482226!2d-0.4739404!3d5.620398799999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1027d7baeb641f3b%3A0xf0ccc4e56ee42fe2!2sDivine%20college%20of%20creative%20art!5e0!3m2!1sen!2sgh!4v1776805160242!5m2!1sen!2sgh"
               width="100%"
               height="100%"
               style={{ border: 0 }}

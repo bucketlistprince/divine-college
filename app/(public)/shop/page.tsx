@@ -1,18 +1,26 @@
 import { Navigation } from "@/components/navigation"
 import { PageHeader } from "@/components/ui/page-header"
-import { headers } from "next/headers"
+import { prisma } from "@/lib/prisma"
 import { ShopContent } from "./shop-content"
 
 async function getProducts() {
-  const headersList = await headers()
-  const host = headersList.get("host")
-  const protocol = process.env.NODE_ENV === "development" ? "http" : "https"
-  
-  const res = await fetch(`${protocol}://${host}/api/products`, {
-    cache: "no-store"
-  })
-  if (!res.ok) throw new Error('Failed to fetch products')
-  return res.json()
+  try {
+    const products = await prisma.product.findMany({
+      where: {
+        status: 'AVAILABLE',
+        stock: {
+          gt: 0
+        }
+      },
+      orderBy: {
+        createdAt: 'desc'
+      }
+    })
+    return products
+  } catch (error) {
+    console.error('Error fetching products:', error)
+    throw new Error('Failed to fetch products')
+  }
 }
 
 export default async function ShopPage() {
